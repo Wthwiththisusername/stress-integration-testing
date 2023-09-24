@@ -8,9 +8,8 @@ public class Query {
         return "SELECT * FROM USER";
     }
 
-    public static String readByIdQuery(User user) {
-        int id = user.getId();
-        return "SELECT * FROM USER WHERE USER_ID = " +id;
+    public static String readByIdQuery(int id) {
+        return "SELECT * FROM USER WHERE USER_ID = " + id;
     }
     public static String deleteByIdQuery(int id) {
         return "DELETE * FROM USER WHERE USER_ID = "+ id;
