@@ -46,7 +46,7 @@ public class Crud {
         Statement statement = connection.createStatement()) {
             User user = new User();
             user.setId(id);
-            try (ResultSet resultSet = statement.executeQuery(Query.readByIdQuery(user))) {
+            try (ResultSet resultSet = statement.executeQuery(Query.readByIdQuery(id))) {
                 if(resultSet.next()) {
                     isFound = true;
                     readUser(new User(resultSet.getInt("USER_ID"), resultSet.getString("USER_NICKNAME"), resultSet.getInt("USER_AGE"), resultSet.getString("USER_EMAIL")));
