@@ -57,6 +57,7 @@ public class Crud {
         }
         return isFound;
     }
+    
     public void deleteById(int id) throws SQLException {
         try(Connection connection = database.getConnection();
         Statement statement = connection.createStatement();) {
@@ -68,6 +69,7 @@ public class Crud {
             }
         }
     }
+    
     public void updateById(User user) throws SQLException {
         try(Connection connection = database.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(Query.updateByIdQuery(user.getId()));) {
