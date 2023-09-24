@@ -41,15 +41,22 @@ public class CrudStressTest {
     }
 
     @Test
-    public void testReadById() {
-
+    public void stressTestReadById() throws InterruptedException {
+        for (int i = 1; i <= numThreads; i++) {
+            int userId = i;
+            Thread thread = new Thread(() -> {
+                try {
+                    crud.readById(userId);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    latch.countDown();
+                }
+            });
+            thread.start();
+        }
+        latch.await();
     }
-
-    @Test
-    public void testReadUser() {
-
-    }
-
     @Test
     public void stressTestUpdateById() throws SQLException {
         User user = new User("packman", 22, "haha@gmail.com");
