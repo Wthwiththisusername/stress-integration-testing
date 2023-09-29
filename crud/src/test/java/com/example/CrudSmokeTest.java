@@ -25,17 +25,7 @@ public class CrudSmokeTest {
     }
 
     @Test
-    public void testDeleteById() {
-        int id = 5;
-        try {
-            crud.deleteById(id);
-        } catch (SQLException e) {
-            fail("Deletion denied through exception: " + e.getMessage());
-        }
-    }
-
-    @Test
-    public void testReadAll() {
+    public void smokeTestReadAll() {
         try {
             crud.readAll();
         } catch (SQLException e) {
@@ -44,7 +34,7 @@ public class CrudSmokeTest {
     }
 
     @Test
-    public void testReadById() {
+    public void smokeTestReadById() {
         int id = 5;
         try {
             boolean isFound = crud.readById(id);
@@ -55,12 +45,22 @@ public class CrudSmokeTest {
     }
 
     @Test
-    public void testUpdateById() {
+    public void smokeTestUpdateById() {
         User user = new User(5, "Winx", 28, "wakingupat8@gmail.com");
         try {
             crud.updateById(user);
         } catch (SQLException e) {
             fail("Updateing denied through exception: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void smokeTestDeleteById() {
+        int id = 5;
+        try {
+            crud.deleteById(id);
+        } catch (SQLException e) {
+            fail("Deletion denied through exception: " + e.getMessage());
         }
     }
 }
